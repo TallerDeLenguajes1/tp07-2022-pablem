@@ -1,4 +1,6 @@
-﻿const int N = 3;
+﻿//Dentro de la clase Empleado
+
+const int N = 3;
 string[] descripciones = {"Sacar la basura", "Imprimir reportes", "Regar las plantas", "Pedir delivery", "Ordenar la oficina"};
 
 var tareasPendientes = new List<Tarea>();
@@ -14,13 +16,12 @@ for (int i = 0; i < N; i++) {
 }
 
 Console.WriteLine("\n1.- Tareas Realizadas");
-foreach (var tarea in tareasPendientes)
-{
+foreach (var tarea in tareasPendientes) {
     Console.WriteLine("¿Realizó la tarea de: "+tarea.Descripcion+"? (0/1)");
     bool resp = Convert.ToBoolean(Convert.ToInt16(Console.ReadLine()));
     if(resp) {
         tareasRealizadas.Add(tarea);
-        tareasPendientes.Remove(tarea);
+        tareasPendientes.Remove(tarea);//!?
     }
 }
 
@@ -34,6 +35,10 @@ foreach (var tarea in tareasPendientes) {
     }
 }
 
-
+int horas = 0;
+foreach (var tarea in tareasRealizadas) {
+    horas += tarea.Duracion;
+}
+Console.WriteLine("\n3.- Horas trabajadas por el empleado: "+horas);
 
 
