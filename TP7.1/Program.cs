@@ -15,15 +15,15 @@ for (int i = 0; i < N; i++) {
     tareasPendientes.Add(nueva);
 }
 
-Console.WriteLine("\n1.- Tareas Realizadas");
+Console.WriteLine("\n1.- Completar tareas");
 foreach (var tarea in tareasPendientes) {
     Console.WriteLine("¿Realizó la tarea de: "+tarea.Descripcion+"? (0/1)");
     bool resp = Convert.ToBoolean(Convert.ToInt16(Console.ReadLine()));
     if(resp) {
         tareasRealizadas.Add(tarea);
-        tareasPendientes.Remove(tarea);//!?
     }
 }
+tareasPendientes = tareasPendientes.Except(tareasRealizadas).ToList();
 
 Console.WriteLine("\n2.- Buscador de tareas pendientes");
 Console.WriteLine("Ingrese una palabra clave: ");
